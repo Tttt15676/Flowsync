@@ -185,7 +185,7 @@
   <div class="max-w-7xl mx-auto relative px-6 grid gap-12 items-center lg:grid-cols-2">
 
     <!-- Mockup -->
-    <div class="saas-mockup group relative overflow-hidden rounded-[32px] border border-blue-200 bg-white shadow-[0_40px_120px_rgba(15,23,42,0.08)] p-6 md:p-10 transition-transform duration-500 ease-out will-change-transform cursor-pointer">
+    <div class="saas-mockup group relative overflow-hidden rounded-[32px] border border-blue-200 bg-white shadow-[0_40px_120px_rgba(15,23,42,0.08)] p-6 md:p-10 transition-transform duration-500 ease-out will-change-[transform,opacity] cursor-pointer">
       <div class="absolute -left-8 -top-8 h-40 w-40 rounded-full bg-blue-100/70 blur-3xl pointer-events-none"></div>
       <div class="absolute -right-10 bottom-10 h-52 w-52 rounded-full bg-sky-100/60 blur-3xl pointer-events-none"></div>
       <div class="relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-inner">
@@ -226,10 +226,10 @@
       </div>
 
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-        <a href="#demo" class="saas-action inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-white shadow-lg shadow-blue-500/20 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-700 will-change-transform">
+        <a href="#demo" class="saas-action inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-white shadow-lg shadow-blue-500/20 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-700 will-change-[transform,opacity]">
           View the full project
         </a>
-        <a href="#pricing" class="saas-action inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-4 text-blue-700 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-50 will-change-transform">
+        <a href="#pricing" class="saas-action inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-4 text-blue-700 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-50 will-change-[transform,opacity]">
           Explore pricing
         </a>
       </div>
@@ -463,10 +463,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-5p0je5APFEg7fLSPEtqLhcXaTOeVWYh+xKjMDd4O7aCHC1brM8T3ynn/e5ju8aYrA7Mv1g8LzRjeO10aX1S1nQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-tQagDDU88LMXx/CxpfR+r5Xny7bAy2r5lwG9Mzf5t1DTXltY6HOIlLxFpzzIQB6y08eiQWVv6J8vtizdkiVaRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  window.addEventListener('load', () => {
+    if (typeof gsap === 'undefined') {
+      console.warn('GSAP failed to load. SaaS section motion disabled.');
+      return;
+    }
 
-    gsap.registerPlugin(ScrollTrigger);
+    const hasScrollTrigger = typeof ScrollTrigger !== 'undefined';
+    if (hasScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
 
     const section = document.querySelector('.saas-case-study');
     if (!section) return;
@@ -474,6 +480,8 @@
     const mockup = section.querySelector('.saas-mockup');
     const infoItems = section.querySelectorAll('.saas-info > *');
     const actionButtons = section.querySelectorAll('.saas-info .saas-action');
+
+    if (!mockup) return;
 
     gsap.set(mockup, {
       transformPerspective: 900,
@@ -498,39 +506,45 @@
       willChange: 'transform, opacity',
     });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
+    const tlConfig = {};
+    if (hasScrollTrigger) {
+      tlConfig.scrollTrigger = {
         trigger: section,
-        start: 'top 85%',
-        end: 'bottom 20%',
-        scrub: 0.7,
+        start: 'top 80%',
         toggleActions: 'play none none reverse',
-      },
-    });
+        once: true,
+      };
+    }
 
-    tl.to(mockup, {
-      x: 0,
-      rotation: 0,
-      scale: 1,
-      opacity: 1,
+    const tl = gsap.timeline(tlConfig);
+
+    tl.from(mockup, {
+      x: -120,
+      rotation: -6,
+      scale: 0.98,
+      opacity: 0,
       ease: 'power3.out',
       duration: 1.2,
     }, 0)
-    .to(infoItems, {
-      y: 0,
-      opacity: 1,
+    .from(infoItems, {
+      y: 30,
+      opacity: 0,
       stagger: 0.14,
       ease: 'power2.out',
       duration: 0.8,
-    }, 0.2)
-    .to(actionButtons, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
+    }, 0.18)
+    .from(actionButtons, {
+      y: 18,
+      opacity: 0,
+      scale: 0.96,
       stagger: 0.08,
       ease: 'power3.out',
       duration: 0.55,
     }, 0.35);
+
+    if (hasScrollTrigger) {
+      ScrollTrigger.refresh();
+    }
 
     mockup.addEventListener('mouseenter', () => {
       gsap.to(mockup, {
