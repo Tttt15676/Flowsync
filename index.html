@@ -179,6 +179,65 @@
   </div>
 </section>
 
+<!-- SAAS CASE STUDY -->
+<section class="saas-case-study relative overflow-hidden py-24 bg-gradient-to-br from-blue-50 via-slate-50 to-white">
+  <div class="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),transparent_60%)] pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto relative px-6 grid gap-12 items-center lg:grid-cols-2">
+
+    <!-- Mockup -->
+    <div class="saas-mockup group relative overflow-hidden rounded-[32px] border border-blue-200 bg-white shadow-[0_40px_120px_rgba(15,23,42,0.08)] p-6 md:p-10 transition-transform duration-500 ease-out will-change-transform cursor-pointer">
+      <div class="absolute -left-8 -top-8 h-40 w-40 rounded-full bg-blue-100/70 blur-3xl pointer-events-none"></div>
+      <div class="absolute -right-10 bottom-10 h-52 w-52 rounded-full bg-sky-100/60 blur-3xl pointer-events-none"></div>
+      <div class="relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-inner">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200"
+             alt="SaaS product mockup"
+             class="w-full h-full object-cover min-h-[380px]">
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="saas-info flex flex-col justify-center gap-6">
+      <div class="max-w-xl">
+        <p class="text-sm uppercase tracking-[0.35em] text-blue-600 font-semibold mb-3">
+          SaaS case study
+        </p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+          FlowSync Studio: smarter team workflows with real-time orchestration.
+        </h2>
+      </div>
+
+      <p class="text-slate-600 max-w-xl text-lg leading-8">
+        A premium touchpoint for product leaders, blending polished analytics, bold storytelling, and motion that feels intentional.
+      </p>
+
+      <div class="space-y-4 text-slate-700">
+        <div class="flex gap-4 rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50/70">
+          <span class="mt-1 inline-flex h-3 w-3 rounded-full bg-blue-600"></span>
+          <p>Fast discovery with KPI-rich dashboards and adaptive automation flows.</p>
+        </div>
+        <div class="flex gap-4 rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50/70">
+          <span class="mt-1 inline-flex h-3 w-3 rounded-full bg-blue-600"></span>
+          <p>Configurable workflows that reduce task overhead across distributed teams.</p>
+        </div>
+        <div class="flex gap-4 rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50/70">
+          <span class="mt-1 inline-flex h-3 w-3 rounded-full bg-blue-600"></span>
+          <p>Secure collaboration features designed for polished enterprise adoption.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+        <a href="#demo" class="saas-action inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-white shadow-lg shadow-blue-500/20 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-700 will-change-transform">
+          View the full project
+        </a>
+        <a href="#pricing" class="saas-action inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-4 text-blue-700 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-50 will-change-transform">
+          Explore pricing
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- PRODUCT PREVIEW / DASHBOARD SECTION -->
 <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6 text-center space-y-12">
@@ -208,6 +267,7 @@
         Start Your Free Trial
     </a>
 </div>
+</section>
 
 <!-- BENEFITS -->
 <section class="py-24 bg-blue-50">
@@ -400,12 +460,125 @@
     </div>
 </section>
 
-    
-</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-5p0je5APFEg7fLSPEtqLhcXaTOeVWYh+xKjMDd4O7aCHC1brM8T3ynn/e5ju8aYrA7Mv1g8LzRjeO10aX1S1nQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-tQagDDU88LMXx/CxpfR+r5Xny7bAy2r5lwG9Mzf5t1DTXltY6HOIlLxFpzzIQB6y08eiQWVv6J8vtizdkiVaRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
+    gsap.registerPlugin(ScrollTrigger);
 
-    
-</section>
+    const section = document.querySelector('.saas-case-study');
+    if (!section) return;
+
+    const mockup = section.querySelector('.saas-mockup');
+    const infoItems = section.querySelectorAll('.saas-info > *');
+    const actionButtons = section.querySelectorAll('.saas-info .saas-action');
+
+    gsap.set(mockup, {
+      transformPerspective: 900,
+      force3D: true,
+      willChange: 'transform, opacity',
+      opacity: 0,
+      x: -120,
+      rotation: -6,
+      scale: 0.98,
+    });
+
+    gsap.set(infoItems, {
+      y: 30,
+      opacity: 0,
+      willChange: 'transform, opacity',
+    });
+
+    gsap.set(actionButtons, {
+      opacity: 0,
+      y: 18,
+      scale: 0.96,
+      willChange: 'transform, opacity',
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 85%',
+        end: 'bottom 20%',
+        scrub: 0.7,
+        toggleActions: 'play none none reverse',
+      },
+    });
+
+    tl.to(mockup, {
+      x: 0,
+      rotation: 0,
+      scale: 1,
+      opacity: 1,
+      ease: 'power3.out',
+      duration: 1.2,
+    }, 0)
+    .to(infoItems, {
+      y: 0,
+      opacity: 1,
+      stagger: 0.14,
+      ease: 'power2.out',
+      duration: 0.8,
+    }, 0.2)
+    .to(actionButtons, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      stagger: 0.08,
+      ease: 'power3.out',
+      duration: 0.55,
+    }, 0.35);
+
+    mockup.addEventListener('mouseenter', () => {
+      gsap.to(mockup, {
+        y: -8,
+        rotation: 0.5,
+        scale: 1.02,
+        duration: 0.35,
+        ease: 'power3.out',
+      });
+    });
+
+    mockup.addEventListener('mouseleave', () => {
+      gsap.to(mockup, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        duration: 0.45,
+        ease: 'power3.out',
+      });
+    });
+
+    mockup.addEventListener('pointermove', (event) => {
+      const rect = mockup.getBoundingClientRect();
+      const relX = (event.clientX - rect.left) / rect.width - 0.5;
+      const relY = (event.clientY - rect.top) / rect.height - 0.5;
+      gsap.to(mockup, {
+        x: relX * 12,
+        y: relY * 8,
+        rotation: relX * 3,
+        duration: 0.4,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+    });
+
+    mockup.addEventListener('pointerleave', () => {
+      gsap.to(mockup, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        duration: 0.45,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
