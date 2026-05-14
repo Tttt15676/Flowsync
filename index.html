@@ -463,25 +463,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-5p0je5APFEg7fLSPEtqLhcXaTOeVWYh+xKjMDd4O7aCHC1brM8T3ynn/e5ju8aYrA7Mv1g8LzRjeO10aX1S1nQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-tQagDDU88LMXx/CxpfR+r5Xny7bAy2r5lwG9Mzf5t1DTXltY6HOIlLxFpzzIQB6y08eiQWVv6J8vtizdkiVaRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-  window.addEventListener('load', () => {
+  console.log('SaaS animation script loaded');
+
+  const initSaasAnimation = () => {
+    console.log('SaaS animation init');
+
     if (typeof gsap === 'undefined') {
       console.warn('GSAP failed to load. SaaS section motion disabled.');
-      return;
+      return null;
     }
 
     const hasScrollTrigger = typeof ScrollTrigger !== 'undefined';
+    console.log('GSAP available:', typeof gsap !== 'undefined', 'ScrollTrigger available:', hasScrollTrigger);
+
     if (hasScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
+      console.log('ScrollTrigger registered');
     }
 
     const section = document.querySelector('.saas-case-study');
-    if (!section) return;
+    if (!section) {
+      console.warn('SaaS section not found in DOM.');
+      return null;
+    }
 
     const mockup = section.querySelector('.saas-mockup');
     const infoItems = section.querySelectorAll('.saas-info > *');
     const actionButtons = section.querySelectorAll('.saas-info .saas-action');
 
-    if (!mockup) return;
+    if (!mockup) {
+      console.warn('SaaS mockup element not found.');
+      return null;
+    }
 
     gsap.set(mockup, {
       transformPerspective: 900,
@@ -542,11 +555,11 @@
       duration: 0.55,
     }, 0.35);
 
-    if (hasScrollTrigger) {
+    if (hasScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
       ScrollTrigger.refresh();
     }
 
-    mockup.addEventListener('mouseenter', () => {
+    const handleMouseEnter = () => {
       gsap.to(mockup, {
         y: -8,
         rotation: 0.5,
@@ -554,9 +567,9 @@
         duration: 0.35,
         ease: 'power3.out',
       });
-    });
+    };
 
-    mockup.addEventListener('mouseleave', () => {
+    const handleMouseLeave = () => {
       gsap.to(mockup, {
         x: 0,
         y: 0,
@@ -565,9 +578,9 @@
         duration: 0.45,
         ease: 'power3.out',
       });
-    });
+    };
 
-    mockup.addEventListener('pointermove', (event) => {
+    const handlePointerMove = (event) => {
       const rect = mockup.getBoundingClientRect();
       const relX = (event.clientX - rect.left) / rect.width - 0.5;
       const relY = (event.clientY - rect.top) / rect.height - 0.5;
@@ -579,9 +592,9 @@
         ease: 'power3.out',
         overwrite: 'auto',
       });
-    });
+    };
 
-    mockup.addEventListener('pointerleave', () => {
+    const handlePointerLeave = () => {
       gsap.to(mockup, {
         x: 0,
         y: 0,
@@ -590,8 +603,39 @@
         ease: 'power3.out',
         overwrite: 'auto',
       });
-    });
-  });
+    };
+
+    mockup.addEventListener('mouseenter', handleMouseEnter);
+    mockup.addEventListener('mouseleave', handleMouseLeave);
+    mockup.addEventListener('pointermove', handlePointerMove);
+    mockup.addEventListener('pointerleave', handlePointerLeave);
+
+    const cleanup = () => {
+      mockup.removeEventListener('mouseenter', handleMouseEnter);
+      mockup.removeEventListener('mouseleave', handleMouseLeave);
+      mockup.removeEventListener('pointermove', handlePointerMove);
+      mockup.removeEventListener('pointerleave', handlePointerLeave);
+      if (hasScrollTrigger) {
+        ScrollTrigger.getAll().forEach((instance) => instance.kill());
+      }
+      tl.kill();
+    };
+
+    window.addEventListener('beforeunload', cleanup);
+    return cleanup;
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSaasAnimation);
+  } else {
+    initSaasAnimation();
+  }
+
+  /*
+    If this is used in a framework environment:
+    React: useEffect(() => { const cleanup = initSaasAnimation(); return cleanup; }, []);
+    Vue: onMounted(() => { const cleanup = initSaasAnimation(); onBeforeUnmount(cleanup); });
+  */
 </script>
 
 </body>
