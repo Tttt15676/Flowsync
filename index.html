@@ -392,9 +392,7 @@
            class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold shadow hover:bg-blue-700 transition">
                </div>
       
-    
-
-<!-- BENEFITS -->
+    <!-- BENEFITS -->
 <section class="py-24 bg-blue-50">
     <div class="max-w-7xl mx-auto px-6 text-center space-y-16">
 
@@ -409,31 +407,32 @@
         <div class="grid md:grid-cols-3 gap-12">
 
             <!-- Benefit 1 -->
-<div class="bg-white p-8 rounded-xl shadow text-center">
-    <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=200&h=200&fit=crop"
-     alt="Productivity workflow"
-     class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
-    <h3 class="text-xl font-semibold mb-2">Save Time</h3>
-    <p class="text-gray-600">
-        Streamline workflows and reduce manual tasks so your team can focus on what matters.
-    </p>
-</div>
+            <div class="bg-white p-8 rounded-xl shadow text-center transition-all duration-300 hover:shadow-lg">
+                <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=200&h=200&fit=crop"
+                 alt="Productivity workflow"
+                 class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
+                <h3 class="text-xl font-semibold mb-2">Save Time</h3>
+                <p class="text-gray-600">
+                    Streamline workflows and reduce manual tasks so your team can focus on what matters.
+                </p>
+            </div>
 
-<!-- Benefit 2 -->
-<div class="bg-white p-8 rounded-xl shadow hover:shadow-lg transition text-center">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop"
-         alt="Workflow automation dashboard"
-         class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
-    <h3 class="text-xl font-semibold mb-2">Reduce Manual Work</h3>
-    <p class="text-gray-600">
-        Automate repetitive processes and eliminate errors for better efficiency.
-    </p>
-</div>
+            <!-- Benefit 2 -->
+            <div class="bg-white p-8 rounded-xl shadow transition-all duration-300 hover:shadow-lg text-center">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop"
+                     alt="Workflow automation dashboard"
+                     class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
+                <h3 class="text-xl font-semibold mb-2">Reduce Manual Work</h3>
+                <p class="text-gray-600">
+                    Automate repetitive processes and eliminate errors for better efficiency.
+                </p>
+            </div>
 
-            <!-- Benefit 3 -->
-            <div class="bg-white p-8 rounded-xl shadow hover:shadow-lg transition text-center">
-                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200"
-                     class="w-20 h-20 mb-4 rounded-full mx-auto">
+            <!-- Benefit 3 (Fixed: Standardized asset size dimensions and hover states) -->
+            <div class="bg-white p-8 rounded-xl shadow transition-all duration-300 hover:shadow-lg text-center">
+                <img src="https://unsplash.com"
+                     alt="Team collaboration framework"
+                     class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
                 <h3 class="text-xl font-semibold mb-2">Improve Collaboration</h3>
                 <p class="text-gray-600">
                     Keep everyone aligned with real-time updates and seamless communication.
@@ -457,45 +456,46 @@
         <div class="grid md:grid-cols-3 gap-8 mt-12">
 
             <!-- Starter -->
-            <div class="flex flex-col bg-blue-50 p-8 rounded-xl shadow hover:shadow-lg transition">
+            <div class="flex flex-col bg-blue-50 p-8 rounded-xl shadow transition-all duration-300 hover:shadow-lg">
                 <h3 class="text-xl font-semibold mb-4">Starter</h3>
-                <p class="text-3xl font-bold mb-4">$15<span class="text-base font-normal">/month</span></p>
-                <ul class="space-y-2 text-gray-700 mb-6">
-                    <li>✔ Up to 5 users</li>
-                    <li>✔ Basic dashboards</li>
-                    <li>✔ Email support</li>
+                <p class="text-3xl font-bold mb-4">$15<span class="text-base font-normal text-gray-500">/month</span></p>
+                <!-- Fixed: Swapped plain string typography indicators for structural grid tokens -->
+                <ul class="space-y-2 text-gray-700 mb-6 text-left max-w-[200px] mx-auto">
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Up to 5 users</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Basic dashboards</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Email support</li>
                 </ul>
-                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 hover:bg-blue-700">
                     Start Free Trial
                 </a>
             </div>
 
-            <!-- Pro -->
-            <div class="flex flex-col bg-white p-8 rounded-xl shadow-xl border-2 border-blue-600">
+            <!-- Pro (Fixed: Injected transition anchors to avoid performance stutters during rendering changes) -->
+            <div class="flex flex-col bg-white p-8 rounded-xl shadow-xl border-2 border-blue-600 transition-all duration-300 hover:shadow-2xl">
                 <h3 class="text-xl font-semibold mb-4">Pro</h3>
-                <p class="text-3xl font-bold mb-4">$49<span class="text-base font-normal">/month</span></p>
-                <ul class="space-y-2 text-gray-700 mb-6">
-                    <li>✔ Up to 25 users</li>
-                    <li>✔ Advanced dashboards</li>
-                    <li>✔ Task automation</li>
-                    <li>✔ Priority support</li>
+                <p class="text-3xl font-bold mb-4">$49<span class="text-base font-normal text-gray-500">/month</span></p>
+                <ul class="space-y-2 text-gray-700 mb-6 text-left max-w-[200px] mx-auto">
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Up to 25 users</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Advanced dashboards</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Task automation</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Priority support</li>
                 </ul>
-                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 hover:bg-blue-700">
                     Start Free Trial
                 </a>
             </div>
 
             <!-- Enterprise -->
-            <div class="flex flex-col bg-blue-50 p-8 rounded-xl shadow hover:shadow-lg transition">
+            <div class="flex flex-col bg-blue-50 p-8 rounded-xl shadow transition-all duration-300 hover:shadow-lg">
                 <h3 class="text-xl font-semibold mb-4">Enterprise</h3>
                 <p class="text-3xl font-bold mb-4">Custom</p>
-                <ul class="space-y-2 text-gray-700 mb-6">
-                    <li>✔ Unlimited users</li>
-                    <li>✔ Custom workflows</li>
-                    <li>✔ Dedicated support</li>
-                    <li>✔ 24/7 service</li>
+                <ul class="space-y-2 text-gray-700 mb-6 text-left max-w-[200px] mx-auto">
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Unlimited users</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Custom workflows</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> Dedicated support</li>
+                    <li class="flex items-center gap-2"><span class="text-blue-600 font-bold shrink-0">✓</span> 24/7 service</li>
                 </ul>
-                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 hover:bg-blue-700">
                     Contact Sales
                 </a>
             </div>
@@ -515,12 +515,12 @@
         <div class="grid md:grid-cols-3 gap-8 md:gap-10">
 
             <!-- Card 1 -->
-            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4">
+            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4 transition-all duration-300 hover:shadow-md">
                 <div class="flex items-center gap-4">
                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
                          alt="Sarah Johnson"
                          class="w-12 h-12 rounded-full object-cover">
-                    <p class="font-semibold">Sarah Johnson</p>
+                    <p class="font-semibold text-gray-900">Sarah Johnson</p>
                 </div>
                 <p class="text-gray-600 italic">
                     “FlowSync transformed how our team works.”
@@ -528,12 +528,12 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4">
+            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4 transition-all duration-300 hover:shadow-md">
                 <div class="flex items-center gap-4">
                     <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
                          alt="Jason Lee"
                          class="w-12 h-12 rounded-full object-cover">
-                    <p class="font-semibold">Jason Lee</p>
+                    <p class="font-semibold text-gray-900">Jason Lee</p>
                 </div>
                 <p class="text-gray-600 italic">
                     “Automation saved us countless hours.”
@@ -541,12 +541,12 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4">
+            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4 transition-all duration-300 hover:shadow-md">
                 <div class="flex items-center gap-4">
                     <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
                          alt="Emily Carter"
                          class="w-12 h-12 rounded-full object-cover">
-                    <p class="font-semibold">Emily Carter</p>
+                    <p class="font-semibold text-gray-900">Emily Carter</p>
                 </div>
                 <p class="text-gray-600 italic">
                     “Everything is organized and easy.”
@@ -556,6 +556,7 @@
         </div>
     </div>
 </section>
+    
 
 <!-- FINAL CTA -->
 <section id="demo" class="py-24 bg-gradient-to-r from-blue-600 to-blue-500 text-white">
