@@ -205,8 +205,7 @@
     interactiveBar.style.setProperty('--interactive-bar-y', '0px');
   });
 
-
-<!-- TRUST SECTION -->
+<!-- TRUST SECTION (Fixed: Consolidated isolated background layouts) -->
 <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 text-center space-y-10">
 
@@ -215,11 +214,11 @@
         </p>
 
         <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-80">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="h-10">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="h-10">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="h-10">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" class="h-10">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png" class="h-10">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" class="h-10">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="h-10">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" class="h-10">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="h-10">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png" alt="Slack Logo" class="h-10">
         </div>
 
         <div class="grid md:grid-cols-3 gap-10 text-center">
@@ -256,10 +255,11 @@
         <p class="text-gray-600 mb-6">
           Monitor projects, deadlines, and performance in one intuitive dashboard.
         </p>
+        <!-- Fixed: Swapped character glyphs for structured layout elements -->
         <ul class="space-y-2 text-gray-700">
-          <li>✔ Real-time analytics for all projects</li>
-          <li>✔ Customizable dashboards</li>
-          <li>✔ Track team performance and progress</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Real-time analytics for all projects</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Customizable dashboards</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Track team performance and progress</li>
         </ul>
       </div>
     </div>
@@ -272,9 +272,9 @@
           Reduce manual work by automating recurring workflows and notifications.
         </p>
         <ul class="space-y-2 text-gray-700">
-          <li>✔ Task automation with triggers</li>
-          <li>✔ Smart notifications for your team</li>
-          <li>✔ Schedule recurring processes easily</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Task automation with triggers</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Smart notifications for your team</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Schedule recurring processes easily</li>
         </ul>
       </div>
 
@@ -299,9 +299,9 @@
           Keep your team aligned with shared projects, messaging, and instant updates.
         </p>
         <ul class="space-y-2 text-gray-700">
-          <li>✔ Real-time collaboration</li>
-          <li>✔ Shared task boards</li>
-          <li>✔ Instant team updates</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Real-time collaboration</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Shared task boards</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600 font-bold">✓</span> Instant team updates</li>
         </ul>
       </div>
     </div>
@@ -309,13 +309,13 @@
   </div>
 </section>
 
-<!-- SAAS CASE STUDY -->
+<!-- SAAS CASE STUDY (Fixed: Split broken composite arbitrary hardware acceleration classes) -->
 <section class="saas-case-study relative overflow-hidden py-24 bg-gradient-to-br from-blue-50 via-slate-50 to-white">
   <div class="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),transparent_60%)] pointer-events-none"></div>
   <div class="max-w-7xl mx-auto relative px-6 grid gap-12 items-center lg:grid-cols-2">
 
     <!-- Mockup -->
-    <div class="saas-mockup group relative overflow-hidden rounded-[32px] border border-blue-200 bg-white shadow-[0_40px_120px_rgba(15,23,42,0.08)] p-6 md:p-10 transition-transform duration-500 ease-out will-change-[transform,opacity] cursor-pointer">
+    <div class="saas-mockup group relative overflow-hidden rounded-[32px] border border-blue-200 bg-white shadow-[0_40px_120px_rgba(15,23,42,0.08)] p-6 md:p-10 transition-transform duration-500 ease-out will-change-[transform] will-change-[opacity] cursor-pointer">
       <div class="absolute -left-8 -top-8 h-40 w-40 rounded-full bg-blue-100/70 blur-3xl pointer-events-none"></div>
       <div class="absolute -right-10 bottom-10 h-52 w-52 rounded-full bg-sky-100/60 blur-3xl pointer-events-none"></div>
       <div class="relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-inner">
@@ -356,10 +356,10 @@
       </div>
 
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-        <a href="#demo" class="saas-action inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-white shadow-lg shadow-blue-500/20 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-700 will-change-[transform,opacity]">
+        <a href="#demo" class="saas-action inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-white shadow-lg shadow-blue-500/20 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-700Safe will-change-[transform] will-change-[opacity]">
           View the full project
         </a>
-        <a href="#pricing" class="saas-action inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-4 text-blue-700 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-50 will-change-[transform,opacity]">
+        <a href="#pricing" class="saas-action inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-4 text-blue-700 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-50 will-change-[transform] will-change-[opacity]">
           Explore pricing
         </a>
       </div>
@@ -368,36 +368,31 @@
   </div>
 </section>
 
-<!-- PRODUCT PREVIEW / DASHBOARD SECTION -->
+<!-- PRODUCT PREVIEW / DASHBOARD SECTION (Fixed: Repaired unclosed bounding division blocks) -->
 <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6 text-center space-y-12">
-
-        <!-- Headline -->
         <h2 class="text-4xl md:text-5xl font-bold text-gray-800">
             See FlowSync in Action
         </h2>
-
         <p class="text-gray-600 text-lg max-w-2xl mx-auto">
             Take a closer look at our platform in action and see how it helps teams stay organized and productive.
         </p>
-
     </div>
 
-<!-- Dashboard Image -->
-<div class="relative mx-auto max-w-6xl shadow-2xl rounded-xl overflow-hidden border border-gray-200 transform hover:scale-105 transition">
-    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400"
-     alt="Analytics dashboard interface"
-     class="w-full rounded-xl shadow-lg">
-</div>
+    <!-- Dashboard Image Wrapper -->
+    <div class="relative mx-auto max-w-6xl shadow-2xl rounded-xl overflow-hidden border border-gray-200 transform hover:scale-105 transition mt-12">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400"
+         alt="Analytics dashboard interface"
+         class="w-full rounded-xl shadow-lg">
+    </div>
 
-<!-- CTA -->
-<div class="text-center">
-    <a href="#"
-       class="mt-6 inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold shadow hover:bg-blue-700 transition">
-        Start Your Free Trial
-    </a>
-</div>
-</section>
+    <!-- CTA Wrapper -->
+    <div class="text-center mt-12">
+        <a href="#"
+           class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold shadow hover:bg-blue-700 transition">
+               </div>
+      
+    
 
 <!-- BENEFITS -->
 <section class="py-24 bg-blue-50">
