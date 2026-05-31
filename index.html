@@ -29,20 +29,27 @@
         transform: translateZ(0);
         backface-visibility: hidden;
       }
+
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .animate-pulse, .animate-spin, .animate-bounce, #interactive-bar {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+        }
+      }
     </style>
 </head>
 
-<body>
+<body class="bg-slate-50">
 
 <!-- NAVBAR -->
-<header class="bg-white shadow-sm">
+<header class="bg-white shadow-sm relative z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-wrap items-center justify-between gap-3">
-
     <!-- Logo -->
     <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
       FlowSync
     </h1>
-
     <!-- Navigation -->
     <nav class="flex flex-wrap gap-3 sm:gap-4 md:gap-8 text-xs sm:text-sm md:text-base text-gray-600">
       <a href="#features" class="hover:text-blue-600">Features</a>
@@ -50,71 +57,154 @@
       <a href="#customers" class="hover:text-blue-600">Customers</a>
       <a href="#demo" class="hover:text-blue-600">Demo</a>
     </nav>
-
     <!-- CTA -->
-    <a href="#" class="text-xs sm:text-sm md:text-base bg-blue-600 text-white px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-lg hover:bg-blue-700">
+    <a href="#" class="text-xs sm:text-sm md:text-base bg-blue-600 text-white px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-lg hover:bg-blue-700 transition-colors">
       Start Free Trial
     </a>
-
   </div>
 </header>
 
 <!-- HERO -->
-<section class="bg-blue-600 text-white py-28">
+<section class="bg-blue-600 text-white py-20 md:py-28 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
 
-        <div>
-            <p class="uppercase text-blue-200 tracking-wider mb-4 text-sm">
+        <div class="space-y-6">
+            <p class="uppercase text-blue-200 tracking-wider text-sm font-semibold">
                 Project management platform
             </p>
 
-            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
                 Organize Work.<br>
                 Automate Tasks.<br>
                 Move Faster.
             </h1>
 
-            <p class="text-xl text-blue-100 mb-10 max-w-xl">
+            <p class="text-lg sm:text-xl text-blue-100 max-w-xl">
                 FlowSync helps teams plan projects, automate workflows,
                 and collaborate in real time — all in one simple platform.
             </p>
 
-            <div class="flex flex-wrap gap-4 mb-4">
-                <a href="#" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold shadow hover:bg-gray-100">
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition-colors">
                     Start Free Trial
                 </a>
-
-                <a href="#" class="border border-white px-8 py-4 rounded-lg hover:bg-blue-500">
+                <a href="#" class="border border-white px-8 py-4 rounded-lg hover:bg-blue-500 transition-colors">
                     Watch Demo
                 </a>
             </div>
 
-            <div id="interactive-bar" class="interactive-bar group inline-flex items-center justify-between gap-4 w-full max-w-2xl rounded-full bg-slate-950/95 px-5 py-4 text-white shadow-lg cursor-pointer transition-all duration-300">
+            <!-- INTERACTIVE CONTROL BAR -->
+            <div id="interactive-bar" class="interactive-bar group inline-flex items-center justify-between gap-4 w-full max-w-2xl rounded-2xl bg-slate-950/95 px-5 py-4 text-white shadow-lg cursor-pointer transform-gpu">
               <div class="space-y-1">
-                <p class="text-sm uppercase tracking-[0.24em] text-sky-300/90">Instant Sync Ready</p>
-                <p class="text-base sm:text-lg font-semibold">Tap to launch the FlowSync motion bar</p>
+                <p id="sync-status" class="text-sm uppercase tracking-[0.24em] text-sky-300/90 transition-colors">Instant Sync Ready</p>
+                <p id="sync-message" class="text-base sm:text-lg font-medium text-slate-200">Tap to launch the FlowSync motion bar</p>
               </div>
-              <span class="inline-flex items-center rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 group-hover:bg-blue-400">
+              <span id="sync-btn" class="inline-flex items-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition-all group-hover:bg-blue-400 shrink-0">
                 Activate
               </span>
             </div>
 
-            <p class="text-blue-200 text-sm">
+            <p class="text-blue-200 text-sm pt-2">
                 No credit card required • Free 14-day trial
             </p>
         </div>
 
-        <div class="overflow-hidden rounded-xl border border-blue-400 shadow-2xl">
-            <video autoplay muted loop playsinline preload="auto" class="hero-demo-video rounded-xl"
-                   poster="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400"
-                   aria-label="SaaS product demo video">
-                <source src="https://cdn.coverr.co/videos/coverr-a-team-working-on-a-dashboard-2983/1080p.mp4" type="video/mp4">
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
+        <!-- TECH SAAS ANIMATION CONTAINER -->
+        <div class="relative w-full aspect-square md:aspect-auto md:h-[480px] rounded-2xl border border-blue-400/30 bg-slate-950 p-6 md:p-8 shadow-2xl overflow-hidden transform-gpu">
+          
+          <!-- Ambient Glow Mesh Base -->
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_65%)]"></div>
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(30,41,59,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(30,41,59,0.2)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+
+          <!-- Dev UI Window Frame -->
+          <div class="relative z-10 flex flex-col h-full w-full rounded-xl border border-slate-800 bg-slate-900/40 backdrop-blur-md p-4">
+            
+            <!-- Window Topbar -->
+            <div class="mb-4 flex items-center justify-between border-b border-slate-800 pb-3">
+              <div class="flex space-x-2">
+                <div class="h-3 w-3 rounded-full bg-rose-500/80"></div>
+                <div class="h-3 w-3 rounded-full bg-amber-500/80"></div>
+                <div class="h-3 w-3 rounded-full bg-emerald-500/80"></div>
+              </div>
+              <div class="text-[10px] font-mono tracking-widest text-slate-500 uppercase">System Data Stream</div>
+            </div>
+
+            <!-- Main Interactive Display Workspace -->
+            <div class="relative flex flex-1 items-center justify-center rounded-lg bg-slate-950/50 border border-slate-800/50 overflow-hidden">
+              
+              <!-- Central Tech Core Hub -->
+              <div id="tech-core" class="relative z-10 flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-[0_0_40px_rgba(59,130,246,0.25)] transition-all duration-500">
+                <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2z" />
+                </svg>
+                
+                <!-- Satellite Data Nodes (Counter Rotating) -->
+                <div class="absolute -top-3 -left-3 h-6 w-6 animate-spin rounded-full border border-dashed border-blue-400/60 [animation-duration:6s]">
+                  <div class="h-2 w-2 rounded-full bg-cyan-400"></div>
+                </div>
+                <div class="absolute -bottom-3 -right-3 h-6 w-6 animate-spin rounded-full border border-dashed border-indigo-400/60 [animation-duration:10s] [animation-direction:reverse]">
+                  <div class="h-2 w-2 rounded-full bg-violet-400"></div>
+                </div>
+              </div>
+
+              <!-- Floating SaaS Metrics (Staggered Animation Positions) -->
+              <div id="badge-left" class="absolute left-4 top-8 z-20 flex items-center space-x-2 rounded-lg border border-slate-800 bg-slate-950/90 px-3 py-2 shadow-xl transition-transform duration-500">
+                <div class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                <div>
+                  <div class="text-[9px] font-medium tracking-wide text-slate-400 uppercase">Automation</div>
+                  <div class="text-xs font-bold text-slate-200">Active Pipeline</div>
+                </div>
+              </div>
+
+              <div id="badge-right" class="absolute right-4 bottom-8 z-20 flex items-center space-x-2 rounded-lg border border-slate-800 bg-slate-950/90 px-3 py-2 shadow-xl transition-transform duration-500">
+                <div class="h-2 w-2 rounded-full bg-blue-400 animate-ping"></div>
+                <div>
+                  <div class="text-[9px] font-medium tracking-wide text-slate-400 uppercase">Sync Speed</div>
+                  <div class="text-xs font-bold text-slate-200">0.4ms Latency</div>
+                </div>
+              </div>
+
+              <!-- Connection Data Tracks (Visual Pathing) -->
+              <svg class="absolute inset-0 h-full w-full stroke-slate-800/40" fill="none" stroke-width="1">
+                <line x1="0" y1="50%" x2="100%" y2="50%" stroke-dasharray="4 4" />
+                <line x1="50%" y1="0" x2="50%" y2="100%" stroke-dasharray="4 4" />
+              </svg>
+
+            </div>
+          </div>
         </div>
+
     </div>
 </section>
+
+<!-- JAVASCRIPT ANIMATION LOGIC ENGINE -->
+<script>
+  const interactiveBar = document.getElementById('interactive-bar');
+  const syncStatus = document.getElementById('sync-status');
+  const syncMessage = document.getElementById('sync-message');
+  const syncBtn = document.getElementById('sync-btn');
+  const techCore = document.getElementById('tech-core');
+  const badgeLeft = document.getElementById('badge-left');
+  const badgeRight = document.getElementById('badge-right');
+
+  let isActive = false;
+
+  // Track cursor position to update CSS variable with hardware acceleration
+  interactiveBar.addEventListener('mousemove', (e) => {
+    if (isActive) return;
+    const rect = interactiveBar.getBoundingClientRect();
+    const relativeY = (e.clientY - rect.top) - (rect.height / 2);
+    // Constrain movement depth
+    const constrainedY = Math.max(-8, Math.min(8, relativeY * 0.2)); 
+    interactiveBar.style.setProperty('--interactive-bar-y', `${constrainedY}px`);
+  });
+
+  // Reset bar position when mouse leaves bounds
+  interactiveBar.addEventListener('mouseleave', () => {
+    if (isActive) return;
+    interactiveBar.style.setProperty('--interactive-bar-y', '0px');
+  });
+
 
 <!-- TRUST SECTION -->
 <section class="py-20 bg-gray-50">
