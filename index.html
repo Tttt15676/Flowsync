@@ -585,51 +585,37 @@
     </div>
 </section>
 
-<!-- Fixed: Injected standard defer flags to protect page initialization pipelines -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-5p0je5APFEg7fLSPEtqLhcXaTOeVWYh+xKjMDd4O7aCHC1brM8T3ynn/e5ju8aYrA7Mv1g8LzRjeO10aX1S1nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-tQagDDU88LMXx/CxpfR+r5Xny7bAy2r5lwG9Mzf5t1DTXltY6HOIlLxFpzzIQB6y08eiQWVv6J8vtizdkiVaRA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<!-- EXTERNAL ASSETS (Fixed: Removed defer to ensure instant initialization context) -->
+<script src="https://cloudflare.com" integrity="sha512-5p0je5APFEg7fLSPEtqLhcXaTOeVWYh+xKjMDd4O7aCHC1brM8T3ynn/e5ju8aYrA7Mv1g8LzRjeO10aX1S1nQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cloudflare.com" integrity="sha512-tQagDDU88LMXx/CxpfR+r5Xny7bAy2r5lwG9Mzf5t1DTXltY6HOIlLxFpzzIQB6y08eiQWVv6J8vtizdkiVaRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-  console.log('SaaS animation script loaded');
+  console.log('SaaS animation engine running');
 
   const initInteractiveBar = () => {
     const interactiveBar = document.getElementById('interactive-bar');
-    if (!interactiveBar || typeof gsap === 'undefined') {
-      return null;
-    }
+    if (!interactiveBar) return null;
 
     const toggleInteractiveBar = () => {
       const isActive = interactiveBar.classList.toggle('active');
-      gsap.to(interactiveBar, {
-        duration: 0.45,
-        ease: isActive ? 'power2.out' : 'elastic.out(1, 0.9)',
-        '--interactive-bar-y': isActive ? '-12px' : '0px',
-        boxShadow: isActive
-          ? '0px 28px 70px rgba(10, 78, 255, 0.45)'
-          : '0px 18px 50px rgba(15, 23, 66, 0.18)',
-        force3D: true,
-      });
+      if (typeof gsap !== 'undefined') {
+        gsap.to(interactiveBar, {
+          duration: 0.45,
+          ease: isActive ? 'power2.out' : 'elastic.out(1, 0.9)',
+          '--interactive-bar-y': isActive ? '-12px' : '0px',
+          boxShadow: isActive
+            ? '0px 28px 70px rgba(10, 78, 255, 0.45)'
+            : '0px 18px 50px rgba(15, 23, 66, 0.18)',
+          force3D: true,
+        });
+      }
     };
 
     interactiveBar.addEventListener('click', toggleInteractiveBar);
-    return () => {
-      interactiveBar.removeEventListener('click', toggleInteractiveBar);
-    };
+    return () => interactiveBar.removeEventListener('click', toggleInteractiveBar);
   };
 
   const initSaasAnimation = () => {
-    console.log('SaaS animation init');
-
-    if (typeof gsap === 'undefined') {
-      console.warn('GSAP failed to load. SaaS section motion disabled.');
-      return null;
-    }
-
-    const hasScrollTrigger = typeof ScrollTrigger !== 'undefined';
-    if (hasScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-    }
-
     const section = document.querySelector('.saas-case-study');
     if (!section) return null;
 
@@ -637,72 +623,65 @@
     const infoItems = section.querySelectorAll('.saas-info > *');
     const actionButtons = section.querySelectorAll('.saas-info .saas-action');
 
-    if (!mockup) return null;
-
-    // Fixed: Altered visibility parameters from static configuration flags
-    gsap.set(mockup, {
-      transformPerspective: 900,
-      force3D: true,
-      opacity: 0
-    });
-
-    gsap.set(infoItems, { opacity: 0 });
-    gsap.set(actionButtons, { opacity: 0 });
-
-    const tlConfig = {};
-    if (hasScrollTrigger) {
-      tlConfig.scrollTrigger = {
-        trigger: section,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
-        once: true,
-      };
+    // Safe Fallback: If GSAP fails to load over CDN, instantly force all content to be visible
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      console.warn('GSAP unavailable. Forcing layout components visible.');
+      if (mockup) mockup.style.opacity = "1";
+      infoItems.forEach(el => el.style.opacity = "1");
+      actionButtons.forEach(el => el.style.opacity = "1");
+      return null;
     }
 
-    const tl = gsap.timeline(tlConfig);
+    gsap.registerPlugin(ScrollTrigger);
 
-    // Fixed: Swapped overlapping .from configurations to clear .to parameters
+    // Fixed: Standardized starting position parameters using dynamic configuration frames
+    gsap.set(mockup, { transformPerspective: 900, force3D: true });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+
+    // Fixed: Altered .to interpolation chains to guarantee items display regardless of CSS defaults
     tl.to(mockup, {
       x: 0,
       rotation: 0,
       scale: 1,
       opacity: 1,
       ease: 'power3.out',
-      duration: 1.2,
-      startAt: { x: -120, rotation: -6, scale: 0.98 }
+      duration: 1.0,
+      startAt: { x: -60, rotation: -4, opacity: 0 }
     }, 0)
     .to(infoItems, {
       y: 0,
       opacity: 1,
-      stagger: 0.14,
+      stagger: 0.1,
       ease: 'power2.out',
-      duration: 0.8,
-      startAt: { y: 30 }
-    }, 0.18)
+      duration: 0.6,
+      startAt: { y: 20, opacity: 0 }
+    }, 0.15)
     .to(actionButtons, {
       y: 0,
       opacity: 1,
       scale: 1,
-      stagger: 0.08,
+      stagger: 0.05,
       ease: 'power3.out',
-      duration: 0.55,
-      startAt: { y: 18, scale: 0.96 }
-    }, 0.35);
+      duration: 0.4,
+      startAt: { y: 10, opacity: 0, scale: 0.98 }
+    }, 0.3);
 
-    if (hasScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
-      ScrollTrigger.refresh();
-    }
-
-    // Fixed: Cleaned up unified positioning tracks to avoid calculation collisions
     const handlePointerMove = (event) => {
       const rect = mockup.getBoundingClientRect();
       const relX = (event.clientX - rect.left) / rect.width - 0.5;
       const relY = (event.clientY - rect.top) / rect.height - 0.5;
       gsap.to(mockup, {
         x: relX * 12,
-        y: (relY * 8) - 8, // Persists the hover liftoff position seamlessly
+        y: relY * 8,
         rotation: relX * 3,
-        scale: 1.02,
         duration: 0.4,
         ease: 'power3.out',
         overwrite: 'auto',
@@ -714,41 +693,31 @@
         x: 0,
         y: 0,
         rotation: 0,
-        scale: 1,
         duration: 0.45,
         ease: 'power3.out',
         overwrite: 'auto',
       });
     };
 
-    mockup.addEventListener('pointermove', handlePointerMove);
-    mockup.addEventListener('pointerleave', handlePointerLeave);
-
-    const cleanup = () => {
-      mockup.removeEventListener('pointermove', handlePointerMove);
-      mockup.removeEventListener('pointerleave', handlePointerLeave);
-      if (hasScrollTrigger) {
-        ScrollTrigger.getAll().forEach((instance) => instance.kill());
-      }
-      tl.kill();
-    };
-
-    window.addEventListener('beforeunload', cleanup);
-    return cleanup;
+    if (mockup) {
+      mockup.addEventListener('pointermove', handlePointerMove);
+      mockup.addEventListener('pointerleave', handlePointerLeave);
+    }
   };
 
-  // Fixed: Unified script engine loop initialization triggers
-  const handleInit = () => {
+  // Run initialization loops uniformly
+  const runningEngineLoop = () => {
     initInteractiveBar();
     initSaasAnimation();
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', handleInit);
+    document.addEventListener('DOMContentLoaded', runningEngineLoop);
   } else {
-    handleInit();
+    runningEngineLoop();
   }
 </script>
+
 </body>
 </html>
 
