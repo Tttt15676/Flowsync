@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowSync Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --interactive-bar-y: 0px;
+      }
+
+      #interactive-bar {
+        transform: translate3d(0, var(--interactive-bar-y), 0);
+        will-change: transform;
+      }
+
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .animate-pulse, .animate-spin, .animate-bounce, #interactive-bar {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+        }
+      }
+    </style>
+</head>
+
+<body class="bg-slate-50">
+
+<!-- NAVBAR -->
+<header class="bg-white shadow-sm relative z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-wrap items-center justify-between gap-3">
+    <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">FlowSync</h1>
+    <nav class="flex flex-wrap gap-3 sm:gap-4 md:gap-8 text-xs sm:text-sm md:text-base text-gray-600">
+      <a href="#features" class="hover:text-blue-600 transition-colors">Features</a>
+      <a href="#pricing" class="hover:text-blue-600 transition-colors">Pricing</a>
+      <a href="#customers" class="hover:text-blue-600 transition-colors">Customers</a>
+      <a href="#demo" class="hover:text-blue-600 transition-colors">Demo</a>
+    </nav>
+    <a href="#" class="text-xs sm:text-sm md:text-base bg-blue-600 text-white px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-lg hover:bg-blue-700 transition-colors">
+      Start Free Trial
+    </a>
+  </div>
+</header>
+    
+<!-- HERO WITH INTEGRATED SAAS ANIMATION -->
+<section class="bg-blue-600 text-white py-20 md:py-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+        <div class="space-y-6">
+            <p class="uppercase text-blue-200 tracking-wider text-sm font-semibold">Project management platform</p>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+                Organize Work.<br>Automate Tasks.<br>Move Faster.
+            </h1>
+            <p class="text-lg sm:text-xl text-blue-100 max-w-xl">
+                FlowSync helps teams plan projects, automate workflows, and collaborate in real time.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors">Start Free Trial</a>
+                <a href="#" class="border border-white px-8 py-4 rounded-lg hover:bg-blue-500 transition-colors">Watch Demo</a>
+            </div>
+
+            <!-- INTERACTIVE CONTROL BAR -->
+            <div id="interactive-bar" class="interactive-bar group inline-flex items-center justify-between gap-4 w-full max-w-2xl rounded-2xl bg-slate-950/95 px-5 py-4 text-white shadow-lg cursor-pointer transform-gpu transition-all duration-300 ease-out hover:scale-[1.01]">
+              <div class="space-y-1">
+                <p id="sync-status" class="text-sm uppercase tracking-[0.24em] text-sky-300/90 transition-colors">Instant Sync Ready</p>
+                <p id="sync-message" class="text-base sm:text-lg font-medium text-slate-200">Tap to launch the FlowSync motion bar</p>
+              </div>
+              <span id="sync-btn" class="inline-flex items-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition-all group-hover:bg-blue-400 shrink-0">
+                Activate
+              </span>
+            </div>
+            <p class="text-blue-200 text-sm pt-2">No credit card required • Free 14-day trial</p>
+        </div>
+
+        <!-- NEW TECH SAAS GRAPHIC ANIMATION CONTAINER -->
+        <div class="relative w-full aspect-square md:h-[480px] rounded-2xl border border-blue-400/30 bg-slate-950 p-6 shadow-2xl overflow-hidden transform-gpu">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_65%)]"></div>
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(30,41,59,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(30,41,59,0.3)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+          <div class="relative z-10 flex flex-col h-full w-full rounded-xl border border-slate-800 bg-slate-900/60 backdrop-blur-md p-5">
+            <div class="mb-4 flex items-center justify-between border-b border-slate-800 pb-3">
+              <div class="flex space-x-2">
+                <div class="h-3 w-3 rounded-full bg-rose-500/80 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></div>
+                <div class="h-3 w-3 rounded-full bg-amber-500/80 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+                <div class="h-3 w-3 rounded-full bg-emerald-500/80 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+              </div>
+              <div class="text-[10px] font-mono tracking-widest text-slate-400 uppercase bg-slate-950 px-2.5 py-1 rounded-md border border-slate-800">
+                Automation Engine
+              </div>
+            </div>
+
+            <div class="relative flex flex-1 flex-col items-center justify-center rounded-lg bg-slate-950/50 border border-slate-800/50 overflow-hidden">
+              
+              <!-- Outer Rotating Satellite System -->
+              <div class="relative flex items-center justify-center w-48 h-48">
+                <!-- Satellite Track 1 -->
+                <div class="absolute inset-0 border border-dashed border-blue-500/30 rounded-full animate-spin [animation-duration:12s]">
+                  <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
+                </div>
+
+                <!-- Satellite Track 2 (Reverse Rotation) -->
+                <div class="absolute inset-6 border border-dashed border-indigo-500/40 rounded-full animate-spin [animation-duration:8s] [animation-direction:reverse]">
+                  <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-2.5 h-2.5 bg-indigo-400 rounded-full shadow-[0_0_10px_rgba(129,140,248,0.8)]"></div>
+                </div>
+
+                <!-- Core Pulsing Hub -->
+                <div class="absolute w-20 h-20 rounded-full bg-blue-500/10 blur-xl animate-pulse"></div>
+                <div id="tech-core" class="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all duration-500">
+                  <svg class="h-10 w-10 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2z" />
+                  </svg>
+                  <div class="absolute -top-1.5 -left-1.5 h-5 w-5 animate-spin rounded-full border border-dashed border-blue-400/60 [animation-duration:5s]">
+                    <div class="h-1 w-1 rounded-full bg-cyan-400"></div>
+                  </div>
+                  <div class="absolute -bottom-1.5 -right-1.5 h-5 w-5 animate-spin rounded-full border border-dashed border-indigo-400/60 [animation-duration:8s] [animation-direction:reverse]">
+                    <div class="h-1 w-1 rounded-full bg-violet-400"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Status Badges -->
+              <div id="badge-left" class="absolute left-4 top-4 z-20 flex items-center space-x-2 rounded-lg border border-slate-800 bg-slate-950/90 px-3 py-1.5 shadow-xl transition-transform duration-500">
+                <div class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></div>
+                <span class="text-[10px] font-medium text-slate-300">Sync Pipeline Running</span>
+              </div>
+              <div id="badge-right" class="absolute right-4 bottom-4 z-20 flex items-center space-x-2 rounded-lg border border-slate-800 bg-slate-950/90 px-3 py-1.5 shadow-xl transition-transform duration-500">
+                <span class="text-[10px] font-mono text-blue-400">Latency: 0.2ms</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+</section>
+    
+<!-- TRUST SECTION -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 text-center space-y-10">
+
+        <p class="text-gray-500 uppercase tracking-wider text-sm">
+            Trusted by teams at
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-85">
+            <div class="flex items-center space-x-2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer">
+                <span class="font-bold text-lg tracking-wider">ACME CORP</span>
+            </div>
+            <div class="flex items-center space-x-2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer">
+                <span class="font-bold text-lg tracking-wider">GLOBEX</span>
+            </div>
+            <div class="flex items-center space-x-2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer">
+                <span class="font-bold text-lg tracking-wider">INITECH</span>
+            </div>
+            <div class="flex items-center space-x-2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer">
+                <span class="font-bold text-lg tracking-wider">UMBRELLA</span>
+            </div>
+            <div class="flex items-center space-x-2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer">
+                <span class="font-bold text-lg tracking-wider">HOOLI</span>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10 text-center pt-8">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-4xl font-bold text-blue-600">50k+</h3>
+                <p class="text-gray-600 mt-1">Active Users</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-4xl font-bold text-blue-600">1,200+</h3>
+                <p class="text-gray-600 mt-1">Teams Using FlowSync</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-4xl font-bold text-blue-600">10M+</h3>
+                <p class="text-gray-600 mt-1">Projects Managed</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="py-24 bg-gray-50 border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+    <!-- FEATURE 1 -->
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="overflow-hidden rounded-xl shadow-lg border border-gray-200">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80"
+             alt="Dashboard screenshot"
+             class="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500">
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-slate-950">Visualize Your Workflow</h2>
+        <p class="text-gray-600 mb-6">
+          Monitor projects, deadlines, and performance in one intuitive dashboard.
+        </p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Real-time analytics for all projects</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Customizable dashboards</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Track team performance and progress</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FEATURE 2 -->
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="flex flex-col justify-center order-last md:order-first">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-slate-950">Automate Repetitive Tasks</h2>
+        <p class="text-gray-600 mb-6">
+          Reduce manual work by automating recurring workflows and notifications.
+        </p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Task automation with triggers</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Smart notifications for your team</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Schedule recurring processes easily</li>
+        </ul>
+      </div>
+
+      <div class="overflow-hidden rounded-xl shadow-lg border border-gray-200">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80"
+             alt="Code automation"
+             class="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500">
+      </div>
+    </div>
+
+    <!-- FEATURE 3 -->
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="overflow-hidden rounded-xl shadow-lg border border-gray-200">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80"
+             alt="Team collaboration"
+             class="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500">
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-slate-950">Collaborate Seamlessly</h2>
+        <p class="text-gray-600 mb-6">
+          Keep your team aligned with shared projects, messaging, and instant updates.
+        </p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Real-time collaboration</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Shared task boards</li>
+          <li class="flex items-center gap-2"><span class="text-blue-600">✔</span> Instant team updates</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+        
+<!-- CASE STUDY SECTION (Fixed: Repaired Missing Wrapping Containers) -->
+<section class="saas-case-study py-24 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+    <!-- Mockup -->
+    <div class="saas-mockup group relative overflow-hidden rounded-[32px] border border-blue-200 bg-white shadow-[0_40px_120px_rgba(15,23,42,0.08)] p-6 md:p-10 transition-transform duration-500 ease-out will-change-[transform] will-change-[opacity] cursor-pointer">
+      <div class="absolute -left-8 -top-8 h-40 w-40 rounded-full bg-blue-100/70 blur-3xl pointer-events-none"></div>
+      <div class="absolute -right-10 bottom-10 h-52 w-52 rounded-full bg-sky-100/60 blur-3xl pointer-events-none"></div>
+      <div class="relative overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-inner">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&q=80"
+             alt="SaaS product mockup"
+             class="w-full h-full object-cover min-h-[380px]">
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="saas-info flex flex-col justify-center gap-6">
+      <div class="max-w-xl">
+        <p class="text-sm uppercase tracking-[0.35em] text-blue-600 font-semibold mb-3">
+          SaaS case study
+        </p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+          FlowSync Studio: smarter team workflows with real-time orchestration.
+        </h2>
+      </div>
+
+      <p class="text-slate-600 max-w-xl text-lg leading-8">
+        A premium touchpoint for product leaders, blending polished analytics, bold storytelling, and motion that feels intentional.
+      </p>
+
+      <div class="space-y-4 text-slate-700">
+        <div class="flex gap-4 rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50/70">
+          <span class="mt-1 inline-flex h-3 w-3 rounded-full bg-blue-600 shrink-0"></span>
+          <p>Fast discovery with KPI-rich dashboards and adaptive automation flows.</p>
+        </div>
+        <div class="flex gap-4 rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50/70">
+          <span class="mt-1 inline-flex h-3 w-3 rounded-full bg-blue-600 shrink-0"></span>
+          <p>Configurable workflows that reduce task overhead across distributed teams.</p>
+        </div>
+        <div class="flex gap-4 rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50/70">
+          <span class="mt-1 inline-flex h-3 w-3 rounded-full bg-blue-600 shrink-0"></span>
+          <p>Secure collaboration features designed for polished enterprise adoption.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center pt-2">
+        <a href="#demo" class="saas-action inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-white shadow-lg shadow-blue-500/20 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-700 will-change-[transform] will-change-[opacity]">
+          View the full project
+        </a>
+        <a href="#pricing" class="saas-action inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-4 text-blue-700 transition duration-300 transform hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-blue-50 will-change-[transform] will-change-[opacity]">
+          Explore pricing
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRODUCT PREVIEW / DASHBOARD SECTION (Fixed: Repaired Nesting Errors and Completed Anchors) -->
+<section class="py-24 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 text-center space-y-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-800">
+            See FlowSync in Action
+        </h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Take a closer look at our platform in action and see how it helps teams stay organized and productive.
+        </p>
+    </div>
+
+    <!-- Dashboard Image Wrapper -->
+    <div class="relative mx-auto max-w-6xl shadow-2xl rounded-xl overflow-hidden border border-gray-200 transform hover:scale-[1.02] transition-transform duration-500 mt-12">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400"
+         alt="Analytics dashboard interface"
+         class="w-full rounded-xl shadow-lg">
+    </div>
+
+    <!-- CTA Wrapper (Fixed) -->
+    <div class="text-center mt-12">
+        <a href="#" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300">
+            Explore Dashboard Features
+        </a>
+    </div>
+</section>
+      
+<!-- BENEFITS -->
+<section class="py-24 bg-blue-50">
+    <div class="max-w-7xl mx-auto px-6 text-center space-y-16">
+
+        <h2 class="text-4xl font-bold text-gray-800">
+            Why Teams Love FlowSync
+        </h2>
+
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            FlowSync helps teams save time, reduce manual work, and improve collaboration — all in one simple platform.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-12">
+
+            <!-- Benefit 1 -->
+            <div class="bg-white p-8 rounded-xl shadow border border-gray-100 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 transform">
+                <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=200&h=200&fit=crop"
+                 alt="Productivity workflow"
+                 class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
+                <h3 class="text-xl font-semibold mb-2">Save Time</h3>
+                <p class="text-gray-600">
+                    Streamline workflows and reduce manual tasks so your team can focus on what matters.
+                </p>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="bg-white p-8 rounded-xl shadow border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 transform text-center">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop"
+                     alt="Workflow automation dashboard"
+                     class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
+                <h3 class="text-xl font-semibold mb-2">Reduce Manual Work</h3>
+                <p class="text-gray-600">
+                    Automate repetitive processes and eliminate errors for better efficiency.
+                </p>
+            </div>
+
+            <!-- Benefit 3 (Fixed: Standardized Image Dimension Asset and Micro-Interactions) -->
+            <div class="bg-white p-8 rounded-xl shadow border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 transform text-center">
+                <img src="https://images.unsplash.com/photo-1531535934200-87062940217b?w=200&h=200&fit=crop"
+                     alt="Team collaboration framework"
+                     class="w-20 h-20 mb-4 rounded-full mx-auto object-cover">
+                <h3 class="text-xl font-semibold mb-2">Improve Collaboration</h3>
+                <p class="text-gray-600">
+                    Keep everyone aligned with real-time updates and seamless communication.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 text-center space-y-12">
+
+        <h2 class="text-4xl font-bold text-gray-800">Choose Your Plan</h2>
+
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Simple pricing that scales with your team.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-12">
+
+            <!-- Starter -->
+            <div class="flex flex-col bg-blue-50 p-8 rounded-xl shadow transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg border border-transparent">
+                <h3 class="text-xl font-semibold mb-4 text-slate-800">Starter</h3>
+                <p class="text-3xl font-bold mb-4 text-slate-900">$15<span class="text-base font-normal text-gray-500">/month</span></p>
+                <ul class="space-y-2 text-gray-700 mb-6 text-left max-w-xs mx-auto">
+                    <li>✔ Up to 5 users</li>
+                    <li>✔ Basic dashboards</li>
+                    <li>✔ Email support</li>
+                </ul>
+                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Start Free Trial
+                </a>
+            </div>
+
+            <!-- Pro -->
+            <div class="flex flex-col bg-white p-8 rounded-xl shadow-xl border-2 border-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl">
+                <h3 class="text-xl font-semibold mb-4 text-slate-800">Pro</h3>
+                <p class="text-3xl font-bold mb-4 text-slate-900">$49<span class="text-base font-normal text-gray-500">/month</span></p>
+                <ul class="space-y-2 text-gray-700 mb-6 text-left max-w-xs mx-auto">
+                    <li>✔ Up to 25 users</li>
+                    <li>✔ Advanced dashboards</li>
+                    <li>✔ Task automation</li>
+                    <li>✔ Priority support</li>
+                </ul>
+                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Start Free Trial
+                </a>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="flex flex-col bg-blue-50 p-8 rounded-xl shadow transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg border border-transparent">
+                <h3 class="text-xl font-semibold mb-4 text-slate-800">Enterprise</h3>
+                <p class="text-3xl font-bold mb-4 text-slate-900">Custom</p>
+                <ul class="space-y-2 text-gray-700 mb-6 text-left max-w-xs mx-auto">
+                    <li>✔ Unlimited users</li>
+                    <li>✔ Custom workflows</li>
+                    <li>✔ Dedicated support</li>
+                    <li>✔ 24/7 service</li>
+                </ul>
+                <a href="#" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Contact Sales
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
+<!-- TESTIMONIALS -->
+<section id="customers" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-16">
+
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">
+            Loved by Teams Worldwide
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+
+            <!-- Card 1 -->
+            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4 border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+                         alt="Sarah Johnson"
+                         class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <p class="font-semibold text-gray-900">Sarah Johnson</p>
+                        <p class="text-xs text-gray-500">Product Lead at Acme</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">
+                    “FlowSync transformed how our team works.”
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4 border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
+                         alt="Jason Lee"
+                         class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <p class="font-semibold text-gray-900">Jason Lee</p>
+                        <p class="text-xs text-gray-500">Operations at Globex</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">
+                    “Automation saved us countless hours.”
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-8 rounded-xl shadow text-left space-y-4 border border-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+                         alt="Emily Carter"
+                         class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <p class="font-semibold text-gray-900">Emily Carter</p>
+                        <p class="text-xs text-gray-500">VP of Design at Hooli</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic">
+                    “Everything is organized and easy.”
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
+<!-- FINAL CTA -->
+<section id="demo" class="py-24 bg-gradient-to-r from-blue-600 to-blue-500 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+
+        <h2 class="text-4xl md:text-5xl font-bold">
+            Start Your Free Trial Today
+        </h2>
+
+        <p class="text-blue-100 text-lg">
+            Join thousands of teams using FlowSync.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-medium transition-colors duration-200 hover:bg-gray-100">
+                Get Started Free
+            </a>
+            <a href="#" class="border border-white px-8 py-4 rounded-lg font-medium transition-colors duration-200 hover:bg-blue-500">
+                Schedule a Demo
+            </a>
+        </div>
+
+        <p class="text-blue-200 text-sm">
+            No credit card required • Cancel anytime
+        </p>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <p class="text-sm">&copy; 2026 FlowSync Inc. All rights reserved.</p>
+    <div class="flex gap-6 text-sm">
+      <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+      <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+      <a href="#" class="hover:text-white transition-colors">Security</a>
+    </div>
+  </div>
+</footer>
+
+<!-- EXTERNAL ASSETS (Fixed CDN Paths & Modern Dependency Standards) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+  console.log('SaaS animation engine running');
+
+  const initInteractiveBar = () => {
+    const interactiveBar = document.getElementById('interactive-bar');
+    if (!interactiveBar) return null;
+
+    const toggleInteractiveBar = () => {
+      const isActive = interactiveBar.classList.toggle('active');
+      const statusEl = document.getElementById('sync-status');
+      const messageEl = document.getElementById('sync-message');
+      const btnEl = document.getElementById('sync-btn');
+
+      if (isActive) {
+        if (statusEl) {
+          statusEl.textContent = "Sync Stream Active";
+          statusEl.classList.add("text-emerald-400");
+        }
+        if (messageEl) messageEl.textContent = "Your team core is actively syncing real-time updates.";
+        if (btnEl) btnEl.textContent = "Deactivate";
+      } else {
+        if (statusEl) {
+          statusEl.textContent = "Instant Sync Ready";
+          statusEl.classList.remove("text-emerald-400");
+        }
+        if (messageEl) messageEl.textContent = "Tap to launch the FlowSync motion bar";
+        if (btnEl) btnEl.textContent = "Activate";
+      }
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(interactiveBar, {
+          duration: 0.45,
+          ease: isActive ? 'power2.out' : 'back.out(1.7)',
+          '--interactive-bar-y': isActive ? '-12px' : '0px',
+          boxShadow: isActive
+            ? '0px 26px 75px rgba(6, 60, 183, 0.45)'
+            : '0px 18px 50px rgba(15, 23, 66, 0.18)',
+          force3D: true,
+        });
+      } else {
+        // Fallback CSS Custom Property implementation
+        interactiveBar.style.setProperty('--interactive-bar-y', isActive ? '-12px' : '0px');
+      }
+    };
+
+    interactiveBar.addEventListener('click', toggleInteractiveBar);
+    return () => interactiveBar.removeEventListener('click', toggleInteractiveBar);
+  };
+
+  const initSaasAnimation = () => {
+    const section = document.querySelector('.saas-case-study');
+    if (!section) return null;
+
+    const mockup = section.querySelector('.saas-mockup');
+    const infoItems = section.querySelectorAll('.saas-info > *');
+    const actionButtons = section.querySelectorAll('.saas-info .saas-action');
+
+    // Safe Fallback: If GSAP fails to load over CDN, instantly force all content to be visible
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      console.warn('GSAP unavailable. Forcing layout components visible.');
+      if (mockup) mockup.style.opacity = "1";
+      infoItems.forEach(el => el.style.opacity = "1");
+      actionButtons.forEach(el => el.style.opacity = "1");
+      return null;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Standardized starting positions using dynamic configuration frames
+    gsap.set(mockup, { transformPerspective: 900, force3D: true });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    });
+
+    // Altered transition chains with explicit fromTo limits to prevent lockups
+    tl.fromTo(mockup, 
+      { x: -60, rotation: -4, opacity: 0 },
+      { x: 0, rotation: 0, scale: 1, opacity: 1, ease: 'power3.out', duration: 1.0 },
+      0
+    )
+    .fromTo(infoItems,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.1, ease: 'power2.out', duration: 0.6 },
+      0.15
+    )
+    .fromTo(actionButtons,
+      { y: 10, opacity: 0, scale: 0.98 },
+      { y: 0, opacity: 1, scale: 1, stagger: 0.05, ease: 'power3.out', duration: 0.4 },
+      0.3
+    );
+
+    const handlePointerMove = (event) => {
+      const rect = mockup.getBoundingClientRect();
+      const relX = (event.clientX - rect.left) / rect.width - 0.5;
+      const relY = (event.clientY - rect.top) / rect.height - 0.5;
+      gsap.to(mockup, {
+        x: relX * 12,
+        y: relY * 8,
+        rotation: relX * 3,
+        duration: 0.4,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+    };
+
+    const handlePointerLeave = () => {
+      gsap.to(mockup, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        duration: 0.45,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+    };
+
+    if (mockup) {
+      mockup.addEventListener('pointermove', handlePointerMove);
+      mockup.addEventListener('pointerleave', handlePointerLeave);
+    }
+  };
+
+  // Run initialization loops uniformly
+  const runningEngineLoop = () => {
+    initInteractiveBar();
+    initSaasAnimation();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runningEngineLoop);
+  } else {
+    runningEngineLoop();
+  }
+</script>
+
+</body>
+</html>
